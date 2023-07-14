@@ -4,19 +4,18 @@ import java.util.Scanner;
 
 public class InserirCliente {
 
-	public static void main(String[] args) {
-		
+	public Cliente obterDadosCliente() {
+	
 		
         // Criação de um objeto Scanner para ler os dados do cliente
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Digite o ID do cliente: ");
-        int id = scanner.nextInt();
-        scanner.nextLine(); 
+        System.out.println("Digite os dados do cliente: ");
+        int id = Main.ultimoId;
         
         System.out.println("Digite o nome do cliente: ");
         String nome = scanner.nextLine();
-        
+       
         System.out.println("Digite o endereço do cliente: ");
         String endereco = scanner.nextLine();
         
@@ -40,20 +39,17 @@ public class InserirCliente {
         
         // Instanciação de um novo objeto Cliente com os dados fornecidos
         Cliente cliente = new Cliente(id, nome, endereco, postalCode, pais, cpf, passaporte, email, dataNascimento);
+
+        cliente.setId(id);
+		cliente.setNome(nome);
+		cliente.setEndereco(endereco);
+        cliente.setPostalCode(postalCode);
+        cliente.setPais(pais);
+        cliente.setCpf(cpf);
+        cliente.setPassaporte(passaporte);
+        cliente.setEmail(email);
+        cliente.setDataNascimento(dataNascimento);
         
-        // Exibição dos dados do cliente
-        System.out.println("Cliente cadastrado:");
-        System.out.println("ID: " + cliente.getId());
-        System.out.println("Nome: " + cliente.getNome());
-        System.out.println("Endereço: " + cliente.getEndereco());
-        System.out.println("Código Postal: " + cliente.getPostalCode());
-        System.out.println("País: " + cliente.getPais());
-        System.out.println("CPF: " + cliente.getCpf());
-        System.out.println("Passaporte: " + cliente.getPassaporte());
-        System.out.println("Email: " + cliente.getEmail());
-        System.out.println("Data de Nascimento: " + cliente.getDataNascimento());
-        
-        // Fechamento do Scanner
-        scanner.close();
+        return cliente;
     }
 }
