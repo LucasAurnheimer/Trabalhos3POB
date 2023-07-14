@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AlterarCama {
 
-	public void  alterarCama(int id, List<Cama> LCama) {
+	public static void  alterarCama(int id, List<Cama> LCama) {
         Scanner scanner = new Scanner(System.in);
 
      

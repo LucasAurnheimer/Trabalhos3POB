@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AlterarCliente {
 
-    public void  alterarCliente1(int id, List<Cliente> Lcliente) {
+    public static void  alterarCliente1(int id, List<Cliente> Lcliente) {
         Scanner scanner = new Scanner(System.in);
 
      

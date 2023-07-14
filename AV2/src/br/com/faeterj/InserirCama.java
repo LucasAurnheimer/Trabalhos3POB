@@ -18,7 +18,6 @@ public Cama obterDadoscama() {
         
         System.out.println("A cama é beliche? (true/false): ");
         boolean ehBeliche = scanner.nextBoolean();
-        scanner.nextLine();
         
         System.out.println("Digite a posição da cama: ");
         String posicao = scanner.nextLine();

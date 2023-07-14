@@ -11,14 +11,16 @@ public class Main {
 
 	public static int ultimoId = 0;
 	public static int ultimoIdCama = 0;
+	public static int ultimoIdQuarto= 0;
+	public static int ultimoIdReserva= 0;
 	
 	
 	
     public static void main(String[] args) {
         ArrayList<Cliente> Lcliente = new ArrayList();
         ArrayList<Cama> Lcama = new ArrayList();
-        ArrayList<Quarto> quarto = new ArrayList();
-        ArrayList<Reserva> reserva = new ArrayList();
+        ArrayList<Quarto> Lquarto = new ArrayList();
+        ArrayList<Reserva> Lreserva = new ArrayList();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -59,7 +61,7 @@ public class Main {
                     }
                     
                     if (clienteEncontrado != null) {
-                    	AlterarCliente.alterarcliente1(clienteEncotrado);
+                    	AlterarCliente.alterarCliente1(idCliente, Lcliente);
                     } else {
                         System.out.println("Cliente não encontrado.");
                     }
@@ -108,7 +110,7 @@ public class Main {
                     }
                     
                     if (CamaEncontrado != null) {
-                    	AlterarCama.alterarCama(CamaEncontrado);
+                    	AlterarCama.alterarCama(idCama, Lcama);
                     } else {
                         System.out.println("Cama não encontrado.");
                     }
@@ -130,42 +132,95 @@ public class Main {
 
                 case 9:
                     System.out.println("\nInserir Quarto");
-                    // Implemente a lógica para inserir um quarto
+                    InserirQuarto novoQuarto = new InserirQuarto();
+                    Quarto quarto = novoQuarto.obterDadosQuarto();
+                    Lquarto.add(quarto);
+
+                    System.out.println("Quarto adicionado com sucesso!");
+                    
+                    ultimoId = ultimoId + 1;
                     break;
 
                 case 10:
                     System.out.println("\nAlterar Quarto");
-                    // Implemente a lógica para alterar um quarto
+                    int idQuarto = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    Quarto QuartoEncontrado = null;
+                    for (Quarto Quarto1 : Lquarto) {
+                        if (Quarto1.getId() == idQuarto) {
+                            QuartoEncontrado = Quarto1;
+                            break;
+                        }
+                    }
+                    
+                    if (QuartoEncontrado != null) {
+                    	AlterarQuarto.alterarQuarto(idQuarto, Lquarto);
+                    } else {
+                        System.out.println("Quarto não encontrado.");
+                    }
                     break;
 
                 case 11:
                     System.out.println("\nDeletar Quarto");
-                    // Implemente a lógica para deletar um quarto
+                    ExcluirQuarto excluir2 = new ExcluirQuarto();
+                    System.out.println("Digite o Id do Quarto que deseja excluir:");
+                    int idExcluir2 = scanner.nextInt();
+                    scanner.nextLine(); 
+                    excluir2.excluirQuarto(idExcluir2, Lquarto);
+                    
                     break;
 
                 case 12:
                     System.out.println("\nLista de Quartos:");
-                    // Implemente a lógica para exibir a lista de quartos
+                    ExibirQuartos exibirQuartos = new ExibirQuartos();
+                    exibirQuartos.exibir(Lquarto);
                     break;
 
                 case 13:
                     System.out.println("\nInserir Reserva");
-                    // Implemente a lógica para inserir uma reserva
+                    InserirReserva novaReserva = new InserirReserva();
+                    Reserva reserva = novaReserva.obterDadosReserva();
+                    Lreserva.add(reserva);
+
+                    System.out.println("Reserva adicionado com sucesso!");
+                    
+                    ultimoId = ultimoIdReserva + 1;
                     break;
 
                 case 14:
                     System.out.println("\nAlterar Reserva");
-                    // Implemente a lógica para alterar uma reserva
+                    int idReserva = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    Reserva ReservaEncontrado = null;
+                    for (Reserva Reserva1 : Lreserva) {
+                        if (Reserva1.getId() == idReserva) {
+                            ReservaEncontrado = Reserva1;
+                            break;
+                        }
+                    }
+                    
+                    if (ReservaEncontrado != null) {
+                    	AlterarReserva.alterarReserva(idReserva, Lreserva);
+                    } else {
+                        System.out.println("Reserva não encontrada.");
+                    }
                     break;
 
                 case 15:
                     System.out.println("\nExcluir Reserva");
-                    // Implemente a lógica para excluir uma reserva
+                    ExcluirReserva excluir3 = new ExcluirReserva();
+                    System.out.println("Digite o Id da Reserva que deseja excluir:");
+                    int idExcluir3 = scanner.nextInt();
+                    scanner.nextLine(); 
+                    excluir3.excluirReserva(idExcluir3, Lreserva);
                     break;
 
                 case 16:
                     System.out.println("\nLista de Reservas:");
-                    // Implemente a lógica para exibir a lista de reservas
+                    ExibirReservas exibirReservas = new ExibirReservas();
+                    exibirReservas.exibir(Lreserva);
                     break;
 
                 case 0:
